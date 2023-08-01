@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular8-client
+spec:
+  selector:
+    matchLabels:
+      app: angular8-client
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: angular8-client
+    spec:
+      containers:
+        - name: angular8-client
+          image: jv803/angular8-springboot-client:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
