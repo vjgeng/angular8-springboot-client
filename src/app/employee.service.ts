@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,10 @@ import { Observable } from 'rxjs';
 export class EmployeeService {
 
   //private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/employees';
+
+   headers = new HttpHeaders()
+  .set('content-type', 'application/json')
+  .set('Access-Control-Allow-Origin', '*');
 
   private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/employees';
 
@@ -30,6 +35,7 @@ export class EmployeeService {
   }
 
   getEmployeesList(): Observable<any> {
+    //return this.http.get(`${this.baseUrl}`, { 'headers': this.headers});
     return this.http.get(`${this.baseUrl}`);
   }
 }
